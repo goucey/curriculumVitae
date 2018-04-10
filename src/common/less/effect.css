@@ -1,0 +1,144 @@
+@keyframes diffuseEffect {
+  0% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: .5;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px rgba(0, 0, 0, 0.5), 0 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px rgba(0, 0, 0, 0.5), 0 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+@keyframes diffuseEffect-sideNav {
+  40% {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px rgba(0, 0, 0, 0.5), 0 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px rgba(0, 0, 0, 0.5), 0 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+}
+@keyframes ballRotateEffectX {
+  0% {
+    left: -27PX;
+  }
+  100% {
+    left: 217px;
+  }
+}
+@keyframes ballRotateEffectY {
+  0% {
+    top: -27px;
+  }
+  100% {
+    top: 217px;
+  }
+}
+@keyframes ballRotateEffect-160-X {
+  0% {
+    left: -45PX;
+  }
+  100% {
+    left: 105px;
+  }
+}
+@keyframes ballRotateEffect-160-Y {
+  0% {
+    top: -45px;
+  }
+  100% {
+    top: 105px;
+  }
+}
+@keyframes rightToLeftEffect {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  49% {
+    opacity: 0;
+    transform: translate3d(-120%, 0, 0);
+  }
+  50% {
+    opacity: 0;
+    transform: translate3d(120%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes RotateEffect {
+  0% {
+    left: 0;
+    bottom: 0;
+  }
+  25% {
+    left: 0;
+    bottom: 98.5%;
+  }
+  50% {
+    left: 98.5%;
+    bottom: 98.5%;
+  }
+  75% {
+    left: 98.5%;
+    bottom: 0;
+  }
+  100% {
+    left: 0;
+    bottom: 0;
+  }
+}
+@keyframes loadingMove {
+  0% {
+    transform: scaleY(0.6) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scaleY(1.1) translate3d(0, -50px, 0);
+  }
+  100% {
+    transform: scaleY(0.6) translate3d(0, 0, 0);
+  }
+}
+@keyframes loadingMoveEyeLeft {
+  0% {
+    transform: rotate(0deg);
+  }
+  33.33% {
+    transform: rotate(30deg);
+  }
+  66.66% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes loadingMoveEyeRight {
+  0% {
+    transform: rotate(0deg);
+  }
+  33.33% {
+    transform: rotate(-20deg);
+  }
+  66.66% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes loadingMoveFace {
+  0% {
+    transform: scale(0.6) rotateX(0deg);
+  }
+  50% {
+    transform: scale(1) rotateX(30deg);
+  }
+  100% {
+    transform: scale(0.6) rotateX(0deg);
+  }
+}
