@@ -1,5 +1,5 @@
 <template>
-<div class="nav-wrap">
+<div v-if="header" class="nav-wrap">
   <ul class="side-nav-content hidden-xs">
     <li class="side-nav-item" v-for="(item,index) in header.titleMenu" :key="index" :class="{current: currentIndex === index}" @click="current(index)">
       <span class="icon" :class="item.iconClass"></span>
@@ -46,7 +46,7 @@ export default {
           app.scrollTop = index * height
           LOOK = true
         }
-      }, 100)
+      }, 50)
     },
     scrollTop (event) {
       let app = document.querySelector('#app')
@@ -126,7 +126,7 @@ export default {
         border-radius: 50%;
         background:@sideNav-bgColor;
         color: @sideNav-fontColor;
-        transition: .5s ease-in-out;
+        transition: .8s ease-in-out;
         transform: scale(0);
       }
       .title-name {

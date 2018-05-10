@@ -1,24 +1,24 @@
 <template>
-<div class="about-wrap" :style="{backgroundImage:`url(${myInfo.backgroundImage})`}" >
+<div class="about-wrap load-hook" v-if="myInfo" :style="{backgroundImage:`url(${myInfo.bgImage})`}" >
   <div class="about-content">
     <h2 class="title">{{myInfo.name}}</h2>
     <div class="container">
        <div class="row">
         <div class="infos-item col-lg-3 col-md-3 col-sm-3 col-xs-6">
             <span class=" icon icon-loading"></span>
-            <span class="icon-title">年龄/30</span>
+            <span class="icon-title">年龄/{{myInfo.info.age}}</span>
         </div>
         <div class="infos-item col-lg-3 col-md-3 col-sm-3 col-xs-6">
             <span class=" icon icon-education"></span>
-            <span class="icon-title">学历/大专</span>
+            <span class="icon-title">学历/{{myInfo.info.education}}</span>
         </div>
         <div class="infos-item col-lg-3 col-md-3 col-sm-3 col-xs-6">
             <span class="icon icon-location"></span>
-            <span class="icon-title">城市/西安</span>
+            <span class="icon-title">城市/{{myInfo.info.location}}</span>
         </div>
         <div class="infos-item col-lg-3 col-md-3 col-sm-3 col-xs-6">
             <span class=" icon icon-Status"></span>
-            <span class="icon-title">状态/离职</span>
+            <span class="icon-title">状态/{{myInfo.info.workStatus}}</span>
         </div>
       </div>
     </div>

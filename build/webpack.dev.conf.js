@@ -52,7 +52,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       app.get('/api/webResume/default.ashx',(req,res)=>{
         res.json({
           code:200,
-          data:serverData,
+          data: serverData,
           msg:''
         })
       })

@@ -1,5 +1,5 @@
 <template>
-<div class="experience-wrap"  :style="{backgroundImage:`url(${exp.backgroundImage})`}">
+<div v-if="exp" class="experience-wrap load-hook" :style="{backgroundImage:`url(${exp.bgImage})`}">
   <div class="experience-content">
     <h2 class="title">{{exp.name}}</h2>
       <div class="container">
@@ -10,7 +10,7 @@
                  <div v-for="(value, key, index) in exp.list" class="ball" :class="{current:key===shouYearKey}" :key="key" :data-key="key" :style="{'animation-delay': `${-((index*step)+4)}s,${-(index*step)}s` }" @click="showYear(key)" >{{getYear(key)}}</div>
               </div>
               <div class="months">
-                  <div class="month " :class="{action: monthActionIndex===index }" v-for="(item,index) in exp.list[shouYearKey]" :key="item.month" :data-index="index" :style="{marginBottom:`${marginTop(exp.list[shouYearKey].length)}px`}" @click="showExpInfo(index)" >
+                  <div v-if="exp.list" class="month " :class="{action: monthActionIndex===index }" v-for="(item,index) in exp.list[shouYearKey]" :key="item.month" :data-index="index" :style="{marginBottom:`${marginTop(exp.list[shouYearKey].length)}px`}" @click="showExpInfo(index)" >
                     <span class="text">{{item.month}}</span>
                   </div>
               </div>
@@ -45,8 +45,12 @@ export default {
   },
   computed: {
     step () {
-      const length = Object.keys(this.exp.list).length
-      return (18 / (length - 1))
+      if (this.exp) {
+        const length = Object.keys(this.exp.list).length
+        return (18 / (length - 1))
+      } else {
+        return 0
+      }
     }
 
   },

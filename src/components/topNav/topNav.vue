@@ -2,7 +2,7 @@
 <div class="top-nav-wrap">
   <div class="content">
     <div class="my-info hidden-xs">
-      <img class="avatar" :src="myInfo.info.avatar" width="40" height="40" :alt="myInfo.info.name">
+      <img class="avatar load-hook" :src="myInfo.info.avatar" width="40" height="40" :alt="myInfo.info.name">
       <span>高希</span>
     </div>
     <div class="menu">

@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <home @show-sohuCS="showSohuCS" :serverData="getData" :myInfo="getData.myInfo" :header="getData.header"></home>
+    <home @show-sohuCS="showSohuCS" v-if="getData" :serverData="getData"></home>
     <about :myInfo="getData.myInfo"></about>
     <skills :skills="getData.skills"></skills>
-    <experience :exp="getData.experience"></experience>
+    <experience v-if="getData.experience" :exp="getData.experience"></experience>
     <works :works="getData.works"></works>
-    <contact ref="contact" :contact="getData.contact" :myInfo="getData.myInfo"></contact>
+    <contact ref="contact" :serverData="getData"></contact>
     <v-nav :header="getData.header"></v-nav>
     <div class="loading">
       <div class="move">
@@ -27,25 +27,29 @@ import works from './components/works/works'
 import contact from './components/contact/contact'
 import nav from './components/nav/nav'
 
-// const ERR_OK = 200
+const ERR_OK = 200
 export default {
   name: 'App',
   data () {
     return {
       serverData: {},
       isChinese: true,
+      getData: {},
       data: {},
       currentIndex: 0,
-      lock: true
+      lock: true,
+      loadNum: 0,
+      timer: null,
+      tempCount: 0
     }
   },
   created () {
-    this.serverData = require('./json/data.json')
-    // this.$http.get('/api/webResume.default').when(res => {
-    //     if (res.body.code === ERR_OK) {
-    //       this.serverData = res.body.data
-    //     }
-    // })
+    this.$http.get('/api/webResume/default.ashx').then(res => {
+      if (res.body.code === ERR_OK) {
+        this.serverData = res.body.data
+        this.getData = this.isChinese ? this.serverData.cn : this.serverData.en
+      }
+    })
   },
   mounted () {
     if (window.addEventListener) {
@@ -59,39 +63,61 @@ export default {
     window.onload = this.loadding
   },
   computed: {
-    getData () {
-      return this.isChinese ? this.serverData.cn : this.serverData.en
-    }
+    // getData () {
+    //   if (this.serverData) {
+    //     return this.isChinese ? this.serverData.cn : this.serverData.en
+    //   }
+    // }
   },
   methods: {
     loadding () {
+      // let bimg = document.querySelectorAll('.load-hook')
+      // let [count, _this] = [0, this]
+      // this.countMove(bimg)
+      // for (let i = 0; i < bimg.length; i++) {
+      //   bimg[i].onload = function () {
+      //     count++
+      //     _this.tempCount = count
+      //     if (_this.tempCount === bimg.length) {
+      //       _this.tempCount = count > bimg.length ? bimg.length : count
+      //       _this.hideLoading()
+      //     }
+      //   }
+      // }
+      setTimeout(() => {
+        this.hideLoading()
+      }, 5000)
+    },
+    // countMove (bimg) {
+    //   let [_this] = [this]
+    //   clearInterval(this.timer)
+    //   this.timer = setInterval(function () {
+    //     let _count = 100 / bimg.length * _this.tempCount
+    //     let step = _count - _this.loadNum
+    //     let temp = 0
+    //     if (step > 0) {
+    //       temp = step - (_count - _this.loadNum - 1)
+    //     }
+    //     console.log(_count, _this.loadNum, temp, bimg.length)
+    //     if (temp > 0) {
+    //       _this.loadNum += temp
+    //     }
+    //     if (_this.loadNum === 100) {
+    //       clearInterval(_this.timer)
+    //     }
+    //   }, 100)
+    // },
+    hideLoading () {
       let loading = document.querySelector('.loading')
       loading.style.transform = 'translate3d(0,-1000px,0)'
       setTimeout(() => {
         loading.style.display = 'none'
-      }, 2000)
+        console.log('Hi! 朋友，感谢您愿意调试简历代码。\n本简历采用ES6,vue2.x,webpack,less,vue-cli开发构建\n如果您有什么建议或者想学习前端，欢迎您加入我们,我们互相学习，共同进步^_^。\n%c源码地址：https://github.com/goucey/curriculumVitae', 'color: red')
+      }, 2500)
     },
     showSohuCS () {
       this.$refs.contact.showSohuCS()
     }
-    // changePages (event) {
-    //   if (this.lock) {
-    //     this.lock = false
-    //     if (event.wheelDelta > 0 || event.detail < 0) {
-    //       this.currentIndex--
-    //       this.currentIndex = this.currentIndex < 0 ? 0 : this.currentIndex
-    //     }
-    //     if (event.wheelDelta < 0 || event.detail > 0) {
-    //       this.currentIndex++
-    //       let menusCount = this.getData.header.titleMenu.length
-    //       this.currentIndex = this.currentIndex >= menusCount ? menusCount - 1 : this.currentIndex
-    //     }
-    //     // 防止多次触发特设置 触发锁
-    //     setTimeout(() => {
-    //       this.lock = true
-    //     }, 800)
-    //   }
-    // }
   },
   components: {
     home,

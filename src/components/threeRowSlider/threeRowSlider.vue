@@ -1,5 +1,5 @@
 <template>
-<div class="three-row-slider row" :class="{show:isShowAnimate}" :style="{'background-image':`url(${images[0]})`}">
+<div class="three-row-slider row load-hook" :class="{show:isShowAnimate}" :style="{'background-image':`url(${images[0]})`}">
   <div class="three-row-item col-lg-4 col-md-4 col-sm-4" >
     <img :style="{visibility:'visible' ,width:`${width}px`,height:'100%',transform: `translate3d(-${translateXStep*0}px,0,0)`,transition:'all 1s ease-in-out',position:'absolute',top:'0',left:'0'}" :src="images[1]" >
   </div>

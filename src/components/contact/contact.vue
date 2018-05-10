@@ -1,18 +1,18 @@
 <template>
-<div class="contact-wrap" :style="{backgroundImage:`url(${contact.backgroundImage})`}">
+<div v-if="serverData.contact" class="contact-wrap load-hook" :style="{backgroundImage:`url(${serverData.contact.bgImage})`}">
   <div class="contact-content">
-    <h2 class="title">{{contact.name}}</h2>
+    <h2 class="title">{{serverData.contact.name}}</h2>
     <div class="container">
       <div class="row">
         <div class="content">
           <div class="tags">
-            <span class="tag" v-for="item in contact.tags" :key="item">{{item}}</span>
+            <span class="tag" v-for="item in serverData.contact.tags" :key="item">{{item}}</span>
           </div>
             <div class="infos">
-              <p class="text" v-for="item in contact.list" :key="item">{{item}}</p>
+              <p class="text" v-for="item in serverData.contact.list" :key="item">{{item}}</p>
             </div>
             <div>
-              <contactWay class="hidden-xs" :myInfo="myInfo"></contactWay>
+              <contactWay class="hidden-xs" :myInfo="serverData.myInfo"></contactWay>
             </div>
         </div>
         <div class="sohuCS-wrap" ref="sohuCSWrap">
@@ -39,10 +39,7 @@ export default {
     }
   },
   props: {
-    contact: {
-      type: Object
-    },
-    myInfo: {
+    serverData: {
       type: Object
     }
   },

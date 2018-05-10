@@ -1,12 +1,12 @@
 <template>
-<div class="works-wrap" :style="{backgroundImage:`url(${works.backgroundImage})`}">
+<div v-if="works" class="works-wrap load-hook" :style="{backgroundImage:`url(${works.bgImage})`}">
   <div class="works-content">
     <h2 class="title">{{works.name}}</h2>
     <div class="container">
       <div class="row">
         <ul class="works-list" :style="{transform: `rotateY(${rolateYDeg}deg)`}">
           <li v-for="(item,index) in works.list" :key="index" class=" works-item" :class="{'hidden-sm': index >=2}">
-            <a :href="item.url">
+            <a :href="item.url" target="_block">
                 <div class="thumbImg" :style="{backgroundImage: `url(${item.thumbImg})` }"></div>
                 <div class="content">
                   <h3 class="title">{{item.name}}</h3>
@@ -74,12 +74,12 @@ export default {
          width: 100%;
          height: 300px;
         .works-item {
+          position: relative;
           flex: 1;
           margin: 10px;
           overflow: hidden;
           a {
             display: block;
-            position: relative;
             .thumbImg {
               height: 300px;
               .bgImageStyle();
@@ -90,7 +90,7 @@ export default {
               left: 0;
               bottom: 0;
               padding: 10px;
-              width: 100%;
+              width: 100.3%;
               line-height: 20px;
               background: @coverLayerColor;
               color: @fontColor;

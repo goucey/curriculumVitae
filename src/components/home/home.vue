@@ -1,11 +1,11 @@
 <template>
-<div class="home" >
+<div class="home" v-if="serverData.myInfo && serverData.default" >
   <div class="bg-slider-wrap hidden-xs">
     <ul class="slider-main">
       <!-- 左右无缝滑动 -->
       <li class="lr-slider" :class="{'show-ainimate':showAinimateIndex === 1}" >
-        <div class="l-slider" :style="{backgroundImage: `url('${sliderImgTemp[0]}')`}"></div>
-        <div class="r-slider" :style="{backgroundImage: `url('${sliderImgTemp[1]}')`}"></div>
+        <div class="l-slider load-hook" :style="{backgroundImage: `url('${sliderImgTemp[0]}')`}"></div>
+        <div class="r-slider load-hook" :style="{backgroundImage: `url('${sliderImgTemp[1]}')`}"></div>
       </li>
       <!-- 左右立方体滚动 -->
       <li class="revolve-slider-wrap" :class="{current:showAinimateIndex === 2}">
@@ -17,13 +17,13 @@
       </li>
       <li>
         <div></div>
-        <div  v-show="isShowShade" :style="{backgroundImage: `url('${bgMarkImg}')`}" ></div>
+        <div class="load-hook" v-show="isShowShade" :style="{backgroundImage: `url('${bgMarkImg}')`}" ></div>
       </li>
     </ul>
   </div>
   <div class="home-content">
       <div class="avatar">
-        <img :src="serverData.myInfo.info.avatar" :alt="serverData.myInfo.info.name">
+        <img class="load-hook" :src="serverData.myInfo.info.avatar" :alt="serverData.myInfo.info.name">
       </div>
       <div class="info">
           <div class="quote">
@@ -31,14 +31,14 @@
             <div class="text">{{serverData.default.quote}}</div>
             <div class="line"></div>
           </div>
-          <div class="introduce">
+          <div class="introduce" >
             <p>我叫{{serverData.myInfo.info.name}}</p>
             <p>一名前端开发工程师</p>
             <p>{{serverData.myInfo.info.email}}</p>
           </div>
-          <contactWay :myInfo="myInfo" class="hidden-lg hidden-md hidden-sm"></contactWay>
+          <contactWay :myInfo="serverData.myInfo" class="hidden-lg hidden-md hidden-sm"></contactWay>
       </div>
-      <topNav @show-sohuCS="showSohuCS" :myInfo="myInfo" :header="header"></topNav>
+      <topNav @show-sohuCS="showSohuCS" :myInfo="serverData.myInfo" :header="serverData.header"></topNav>
   </div>
   <!-- <div class="shade" @mousemove="heartMove" @mouseout="heartMoveOut"> -->
   <!-- </div> -->
@@ -63,11 +63,8 @@ export default {
       // 是否开始显示蒙层的图片
       isShowShade: true,
       timer: null,
-      bgMarkImg: this.serverData.default.imgs[0],
-      sliderImgTemp: [
-        this.serverData.default.imgs[0],
-        this.serverData.default.imgs[1]
-      ],
+      bgMarkImg: '',
+      sliderImgTemp: [],
       mouseMoveModel: {
         transform: 'rotateY(0deg) rotateX(0deg) translate3d(0,0,50px)'
       }
@@ -76,12 +73,19 @@ export default {
   props: {
     serverData: {
       type: Object
-    },
-    myInfo: {
-      type: Object
-    },
-    header: {
-      type: Object
+    }
+  },
+  watch: {
+    'serverData' () {
+      if (this.serverData.default) {
+        if (this.sliderImgTemp.length === 0) {
+          this.sliderImgTemp = [
+            this.serverData.default.imgs[0],
+            this.serverData.default.imgs[1]
+          ]
+        }
+        this.bgMarkImg = this.serverData.default.imgs[0]
+      }
     }
   },
   computed: {
@@ -115,8 +119,6 @@ export default {
             temp = this.serverData.default.imgs[index]
           }
           this.sliderImgTemp[1] = temp
-
-          // console.log('倒计时开始')
         }, 4000)
       }, 8000)
     },
@@ -125,7 +127,9 @@ export default {
     }
   },
   mounted () {
-    this._sliderAinimate()
+    this.$nextTick(() => {
+      this._sliderAinimate()
+    })
   },
   components: {
     revolveSlider,

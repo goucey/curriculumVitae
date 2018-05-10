@@ -1,5 +1,5 @@
 <template>
-<div class="skills-wrap" :style="{backgroundImage:`url(${skills.backgroundImage})`}">
+<div v-if="skills" class="skills-wrap load-hook" :style="{backgroundImage:`url(${skills.bgImage})`}" >
   <div class="skills-content">
     <h2 class="title">{{skills.name}}</h2>
     <div class="container">
@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="desc-wrap col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <p class="desc hidden-xs" v-for="(desc, descIndex) in skills.descList" :key="descIndex" >{{descIndex+1}}?{{desc}}</p>
+            <p class="desc hidden-xs" v-for="(desc, descIndex) in skills.descList" :key="descIndex" >{{descIndex+1}}、{{desc}}</p>
             <p class="desc hidden-sm hidden-md hidden-lg" v-for="item in skills.briefDescList" :key="item" >{{item}}</p>
         </div>
       </div>
@@ -60,7 +60,7 @@ export default {
         if (this.skillsIndex <= 0) {
           this.isAdd = true
         }
-        console.log(this.skillsIndex, this.skellPointLeft.length)
+        // console.log(this.skillsIndex, this.skellPointLeft.length)
         if (this.isAdd) {
           this.skillsIndex++
         } else {

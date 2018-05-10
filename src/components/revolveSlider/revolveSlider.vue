@@ -1,7 +1,7 @@
 <template>
  <div class="revolve-slider" :class="{init: !isShowAnimate,current: isShowAnimate}">
-    <div class="frist-bg-img" :style="{backgroundImage: `url(${images[1]})`}"></div>
-    <div class="last-bg-img" :style="{backgroundImage: `url(${images[0]})`}"></div>
+    <div class="frist-bg-img load-hook" :style="{backgroundImage: `url(${images[1]})`}"></div>
+    <div class="last-bg-img load-hook" :style="{backgroundImage: `url(${images[0]})`}"></div>
   </div>
 </template>
 

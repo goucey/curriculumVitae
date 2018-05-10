@@ -6,32 +6,32 @@
         "英文"
       ],
       "titleMenu": [{
-          "icon": "icon-home",
+          "iconClass": "icon-home",
           "target": "#home",
           "titleName": "首页"
         },
         {
-          "icon": "icon-user",
+          "iconClass": "icon-user",
           "target": "#about",
           "titleName": "关于我"
         },
         {
-          "icon": "icon-skill",
+          "iconClass": "icon-skill",
           "target": "#skills",
           "titleName": "技能概况"
         },
         {
-          "icon": "icon-education_mark",
+          "iconClass": "icon-education_mark",
           "target": "#experience",
           "titleName": "我的经历"
         },
         {
-          "icon": "icon-works",
+          "iconClass": "icon-works",
           "target": "#works",
           "titleName": "作品集"
         },
         {
-          "icon": "icon-wechart",
+          "iconClass": "icon-wechat",
           "target": "#contact",
           "titleName": "联系我"
         }
@@ -40,9 +40,10 @@
     "default": {
       "name": "首页",
       "imgs": [
-        "http://localhost:8000/assets/bg_1.jpg",
-        "http://localhost:8000/assets/bg_2.jpg",
-        "http://localhost:8000/assets/bg_3.jpg"
+        "http://webapi.yuzhers.com/api/image/?n=bg_1.jpg",
+        "http://webapi.yuzhers.com/api/image/?n=bg_2.jpg",
+        "http://webapi.yuzhers.com/api/image/?n=bg_3.jpg",
+        "http://webapi.yuzhers.com/api/image/?n=bg_4.jpg"
       ],
       "smallImgs": [
 
@@ -51,22 +52,62 @@
     },
     "myInfo": {
       "name": "关于我",
-      "backgroundImage": "http://localhost:8000/assets/gf_bg_4.jpg",
+      "bgImage": "http://webapi.yuzhers.com/api/image/?n=gf_bg_19.jpg",
       "info": {
         "name": "谈维西",
-        "avatar": "http://localhost:8000/assets/avatar.jpeg",
+        "avatar": "http://webapi.yuzhers.com/api/image/?n=avatar.jpeg",
+        "age":30,
+        "education":"大专",
+        "location": "西安",
+        "workStatus":"离职",
         "email": "gaoxi0004@163.com",
-        "qq": 86477385,
-        "weChat": "",
-        "gitHub": "",
+        "contactInfo": [
+          {
+            "name":"gitHub",
+            "tooltip":"gitHub",
+            "path": "https://github.com/goucey",
+            "iconClass":"icon-github"
+          },
+          {
+            "name":"email",
+            "tooltip":"gaoxi0004@163.com",
+            "path": "mailto:gaoxi0004@163.com",
+            "iconClass":"icon-email"
+          },
+          {
+            "name":"qq",
+            "tooltip":86477385,
+            "path": "http://wpa.qq.com/msgrd?v=3&uin=86477385&site=qq&menu=yes",
+            "iconClass":"icon-qq"
+          },
+          {
+            "name":"weChat",
+            "tooltipImg":"http://webapi.yuzhers.com/api/image/?n=wechat.jpg",
+            "path": "javascript:;",
+            "iconClass":"icon-wechat"
+          },
+          {
+            "name":"微博",
+            "tooltip":"微博",
+            "path": "https://weibo.com/1230780537",
+            "iconClass":"icon-webo"
+          },
+          {
+           "name": "知乎",
+           "tooltip":"知乎",
+           "path":"javascript:;",
+           "iconClass":"icon-zhihu"
+          }
+        ],
         "desc": "你好,我叫谈维西,位于古都西安,我不是计算机专业,但对计算机有一定的兴趣,经常浏览网站对于网页制作更是产生了浓厚的兴趣,随即自学了前端开发,今后的职业规划向着全栈多方位发展,目前正在学vue,写过响应、移动、pc端等页面。熟悉MVVM、MVC开发、并具有高效的自学能力,能独立分析解决问题。"
       }
 
     },
     "skills": {
       "name": "技能概况",
-      "backgroundImage": "http://localhost:8000/assets/gf_bg_5.jpg",
-      "list": [{
+      "bgImage": "http://webapi.yuzhers.com/api/image/?n=gf_bg_12.jpg",
+      "list": [
+        {
           "color": "rgba(253,0,0,.6)",
           "name": "JS",
           "master": 80
@@ -147,7 +188,7 @@
     },
     "experience": {
       "name": "我的经历",
-      "backgroundImage": "http://localhost:8000/assets/gf_bg_6.jpg",
+      "bgImage": "http://webapi.yuzhers.com/api/image/?n=gf_bg_17.jpg",
       "list": {
         "Y2016": [{
           "month": "5",
@@ -258,28 +299,29 @@
     },
     "works": {
       "name": "作品集",
-      "backgroundImage": "http://localhost:8000/assets/gf_bg_2.jpg",
-      "list": [{
+      "bgImage": "http://webapi.yuzhers.com/api/image/?n=gf_bg_20.jpg",
+      "list": [
+        {
         "name": "web外卖订餐",
-        "thumbImg": "http://localhost:8000/assets/thumb_takeOut.jpg",
+        "thumbImg": "http://webapi.yuzhers.com/api/image/?n=thumb_takeOut.jpg",
         "desc": "使用vue开发，并且使用vue路由实现的单页面订餐外卖系统",
-        "url": "#"
+        "url": "http://webapi.yuzhers.com/website/takeOut/index.html"
       },
       {
         "name": "音乐播放器",
-        "thumbImg": "http://localhost:8000/assets/thumb_qqMusic.PNG",
+        "thumbImg": "http://webapi.yuzhers.com/api/image/?n=thumb_qqMusic.PNG",
         "desc": "使用html5、css3以及QQ音乐官方接口开发的一个播放器",
-        "url": "#"
+        "url": "http://webapi.yuzhers.com/website/music/index.html"
       },
       {
         "name": "web外卖订餐",
-        "thumbImg": "http://localhost:8000/assets/thumb_takeOut.jpg",
+        "thumbImg": "http://webapi.yuzhers.com/api/image/?n=thumb_takeOut.jpg",
         "desc": "使用vue开发，并且使用vue路由实现的单页面订餐外卖系统",
         "url": "#"
       },
       {
         "name": "博客系统",
-        "thumbImg": "http://localhost:8000/assets/thumb_blog.PNG",
+        "thumbImg": "http://webapi.yuzhers.com/api/image/?n=thumb_blog.PNG",
         "desc": "使用html5、css3以及QQ音乐官方接口开发的一个播放器",
         "url": "#"
       }
@@ -287,7 +329,7 @@
     },
     "contact": {
       "name": "联系我",
-      "backgroundImage": "http://localhost:8000/assets/bg_2.jpg",
+      "bgImage": "http://webapi.yuzhers.com/api/image/?n=gf_bg_14.jpg",
       "tags":[
         "灵感",
         "代码",
